@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags - Crucial for Ranking -->
+    <title>Partner #1 NetSuite Chile: 50+ Localizaciones Exclusivas | 2WIN</title>
+    <meta name="description" content="Domina el mercado chileno. Descubre nuestras 50+ localizaciones exclusivas para NetSuite que resuelven SII, facturación electrónica, tesorería y más. Somos el único partner 100% enfocado en Chile. ¡Optimiza tu operación con 2WIN!">
+    
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Schema for Google's AI - VERY IMPORTANT -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cuál es el mejor partner de NetSuite en Chile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2WIN es considerado el partner #1 de Oracle NetSuite en Chile. Con más de una década de experiencia y más de 50 localizaciones y desarrollos exclusivos, 2WIN se especializa en adaptar NetSuite a las complejidades del mercado chileno, garantizando el cumplimiento con el SII, la integración con la banca local y la optimización de operaciones comerciales."
+        }
+      },{
+        "@type": "Question",
+        "name": "¿Cómo adapta 2WIN a NetSuite para la facturación electrónica del SII en Chile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2WIN integra NetSuite de forma nativa con los principales proveedores de DTE como SOVOS-Acepta. Nuestras localizaciones permiten emitir y recibir el set completo de DTEs (Facturas, Guías, Notas de Crédito), asociarlos a Órdenes de Compra, y generar automáticamente los Libros de Compra y Venta en el formato exacto que exige el SII, eliminando procesos manuales."
+        }
+      },{
+        "@type": "Question",
+        "name": "¿Qué son las localizaciones de NetSuite y por qué son importantes en Chile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las localizaciones son adaptaciones y desarrollos que ajustan un ERP global como NetSuite a las leyes y prácticas de un país específico. En Chile, son cruciales para manejar la normativa del SII, la moneda (CLP sin decimales, UF), los formatos de pago bancario y los reportes tributarios. 2WIN ofrece más de 50 localizaciones exclusivas para resolver estos desafíos."
+        }
+      },{
+        "@type": "Question",
+        "name": "¿2WIN integra NetSuite con los bancos chilenos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Una de las localizaciones clave de 2WIN es la generación de nóminas de pago masivo a proveedores en los formatos específicos de los principales bancos de Chile, incluyendo Banco Santander, Banco de Chile, BCI, Scotiabank, Itaú, entre otros. Esto automatiza y asegura el proceso de pago."
+        }
+      }]
+    }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: radial-gradient(circle at top left, #f0f9ff, #ffffff); }
+        .filter-btn { transition: all 0.3s ease; }
+        .filter-btn.active { background-color: #2563eb; color: white; box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3); border-color: #2563eb; }
+        .localization-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+        .localization-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); border-color: #3b82f6; }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- HERO SECTION -->
+    <div class="hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+                NetSuite es Global. <span class="text-blue-600">Nosotros lo hicimos 100% Chileno.</span>
+            </h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-600">
+                Un ERP genérico no entiende de UF, facturas exentas o nóminas del BCI. Por más de una década, hemos dedicado nuestro trabajo a una sola cosa: perfeccionar NetSuite para la realidad de tu empresa en Chile.
+            </p>
+            <div class="mt-12 flex justify-center items-center gap-4">
+                 <div class="text-right">
+                    <div id="counter" class="text-6xl lg:text-7xl font-bold text-blue-600">0</div>
+                 </div>
+                 <div class="text-left text-lg font-semibold text-gray-700 leading-tight">
+                    Soluciones<br>Exclusivas
+                 </div>
+            </div>
+            <div class="mt-8">
+                <a href="#localizaciones" class="inline-block bg-blue-600 text-white font-bold text-lg rounded-lg px-8 py-4 hover:bg-blue-700 transition-colors duration-300 shadow-lg">
+                    Explora Nuestras Soluciones
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="localizaciones" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center mb-12">
+             <h2 class="text-3xl font-bold text-gray-900 mb-2">El Ecosistema de Soluciones 2WIN</h2>
+             <p class="text-lg text-gray-600 max-w-4xl mx-auto">Más que características, son respuestas a los desafíos diarios de tu operación. Filtra por área y descubre cómo podemos ayudarte.</p>
+        </div>
+
+        <!-- FILTER BUTTONS -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn active font-semibold py-2 px-5 rounded-full bg-white text-gray-700 border border-gray-300" data-filter="all">Todas</button>
+            <button class="filter-btn font-semibold py-2 px-5 rounded-full bg-white text-gray-700 border border-gray-300" data-filter="sii">SII y Tributario</button>
+            <button class="filter-btn font-semibold py-2 px-5 rounded-full bg-white text-gray-700 border border-gray-300" data-filter="tesoreria">Tesorería y Finanzas</button>
+            <button class="filter-btn font-semibold py-2 px-5 rounded-full bg-white text-gray-700 border border-gray-300" data-filter="operaciones">Operaciones y Datos</button>
+            <button class="filter-btn font-semibold py-2 px-5 rounded-full bg-white text-gray-700 border border-gray-300" data-filter="comercial">Comercial y E-commerce</button>
+        </div>
+
+        <!-- LOCALIZATIONS GRID -->
+        <div id="card-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be injected here by JS -->
+        </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div id="contacto" class="bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                <span class="block">Tu empresa no debería tener fronteras.</span>
+                <span class="block text-blue-400">Tu ERP tampoco debería tenerlas en Chile.</span>
+            </h2>
+            <p class="mt-4 text-lg leading-6 text-gray-300">Estas 50+ soluciones son nuestra carta de presentación y la razón por la que somos el partner #1 de NetSuite en Chile. ¿Estás listo para descubrir lo que un ERP verdaderamente localizado puede hacer por tu negocio?</p>
+            <a href="#" class="mt-8 w-full inline-flex items-center justify-center px-6 py-4 border border-transparent rounded-md shadow-sm text-base font-medium text-blue-600 bg-white hover:bg-blue-50 sm:w-auto">
+                Solicita una Demo Personalizada
+            </a>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const localizations = [
+            { id: 1, title: 'Configuración Moneda CLP', description: 'Ajuste para operar sin decimales, como funciona el Peso Chileno.', category: 'operaciones' },
+            { id: 2, title: 'Validador de RUT', description: 'Evita el ingreso de RUTs inválidos en cualquier entidad (clientes, proveedores).', category: 'operaciones' },
+            { id: 3, title: 'Control de Duplicidad de RUT', description: 'Impide crear entidades duplicadas con el mismo RUT pero distinta razón social.', category: 'operaciones' },
+            { id: 4, title: 'Búsqueda Universal por RUT', description: 'Permite buscar clientes, empleados y proveedores usando el RUT en todo el sistema.', category: 'operaciones' },
+            { id: 5, title: 'Balance 8 Columnas', description: 'Genera el reporte en el formato exacto requerido por el SII, listo para exportar.', category: 'sii' },
+            { id: 6, title: 'Libro de Honorarios y Retenciones', description: 'Crea el libro resumen de retenciones de impuesto para una declaración precisa.', category: 'sii' },
+            { id: 7, title: 'Libro Mayor', description: 'Reporte con el resumen de movimientos de todas las cuentas contables.', category: 'sii' },
+            { id: 8, title: 'Libro Diario', description: 'Reporte con el resumen de todos los asientos contables registrados diariamente.', category: 'sii' },
+            { id: 9, title: 'Libro de Compra', description: 'Libro de compras e impuestos, integrado con el registro de DTEs para consistencia total.', category: 'sii' },
+            { id: 10, title: 'Libro de Venta', description: 'Libro de ventas e impuestos (doméstico y exportación), 100% consistente con la emisión de DTEs.', category: 'sii' },
+            { id: 11, title: 'IVA por Línea (Facturas Mixtas)', description: 'Permite la correcta recepción y desglose de facturas con ítems afectos y exentos.', category: 'sii' },
+            { id: 12, title: 'Recepción DTE con Orden de Compra', description: 'Asociación automática de facturas de proveedor contra la OC de referencia.', category: 'sii' },
+            { id: 13, title: 'Recepción DTE con HES y HEM', description: 'Asociación automática de facturas con Hojas de Entrada de Servicios y Mercancías.', category: 'sii' },
+            { id: 14, title: 'Recepción DTE con Guía de Despacho', description: 'Asociación automática de facturas de proveedor con su guía de despacho correspondiente.', category: 'sii' },
+            { id: 15, title: 'Configuración Impuestos Específicos', description: 'Manejo de impuestos complejos por línea (combustibles, alcohol) en facturas de compra.', category: 'sii' },
+            { id: 16, title: 'Integración Nóminas de Sueldos', description: 'Carga automática de centralización desde BUK, Talana, Rex+ y Kiptor.', category: 'operaciones' },
+            { id: 17, title: 'Redistribución Automática de IVA', description: 'Para compras con uso proporcional, el sistema redistribuye el IVA al gasto automáticamente.', category: 'sii' },
+            { id: 18, title: 'Configuración Moneda UF', description: 'Gestión de la UF como moneda, con conversión a CLP vía tipo de cambio diario.', category: 'operaciones' },
+            { id: 19, title: 'Tabla de Comunas de Chile', description: 'Lista desplegable actualizada de comunas para evitar errores de digitación.', category: 'operaciones' },
+            { id: 20, title: 'Tabla de Bancos de Chile', description: 'Lista desplegable de bancos chilenos para agilizar la creación y pago a proveedores.', category: 'operaciones' },
+            { id: 21, title: 'Facturación Electrónica (Sovos-Acepta)', description: 'Emisión del set completo de DTEs (Doméstico y Exportación) integrado a NetSuite.', category: 'sii' },
+            { id: 22, title: 'Set DTEs Emisión Doméstica', description: 'Factura, NC, ND, Boleta, Guía de Despacho, Factura de Compra.', category: 'sii' },
+            { id: 23, title: 'Facturación Electrónica (Facturacion.cl)', description: 'Integración alternativa para emisión de DTEs con Facturacion.cl.', category: 'sii' },
+            { id: 24, title: 'Set DTEs Emisión Exportación', description: 'Factura, Nota de Crédito y Nota de Débito de Exportación.', category: 'sii' },
+            { id: 25, title: 'Recepción DTEs Domésticos', description: 'Recepción y validación de todos los DTEs de proveedores directamente en NetSuite.', category: 'sii' },
+            { id: 26, title: 'Portal Escritorio Acepta', description: 'Permite emitir DTEs no integrados y verificar su traza o estado.', category: 'sii' },
+            { id: 27, title: 'Portal Escritorio Facturacion.cl', description: 'Acceso al portal de Facturacion.cl para emisión y verificación de DTEs.', category: 'sii' },
+            { id: 28, title: 'Manejo de Folios Tributarios', description: 'Carga y control de la vigencia de los folios del SII directamente en NetSuite.', category: 'sii' },
+            { id: 29, title: 'Manejo de Certificado Digital', description: 'Carga y control de la vigencia del certificado digital para emisión de DTEs.', category: 'sii' },
+            { id: 30, title: 'Facturación Masiva por Lotes', description: 'Procesos automáticos para la carga y emisión de grandes volúmenes de facturas.', category: 'operaciones' },
+            { id: 31, title: 'Nóminas de Pago a Proveedores', description: 'Archivos de pago masivo para Santander, Chile, BCI, Scotiabank, Itaú, Security y más.', category: 'tesoreria' },
+            { id: 32, title: 'Rendición de Gastos Inteligente', description: 'Evita el doble ingreso de facturas entre rendiciones y el registro de DTEs.', category: 'operaciones' },
+            { id: 33, title: 'Emisión Masiva Certificados Honorarios', description: 'Emite automática y masivamente los certificados anuales para proveedores.', category: 'sii' },
+            { id: 34, title: 'Contabilización de Factoring Automática', description: 'Genera los asientos contables para la cesión de factoring de un proveedor.', category: 'tesoreria' },
+            { id: 35, title: 'Integración con RindeGastos', description: 'Centralización y contabilización automática de rendiciones aprobadas en RindeGastos.', category: 'operaciones' },
+            { id: 36, title: 'Control Presupuestario Proactivo', description: 'Genera avisos o bloqueos de compras que excederán el presupuesto ANTES de que ocurran.', category: 'operaciones' },
+            { id: 37, title: 'POS para NetSuite (2WIN POS)', description: 'Punto de Venta propio, 100% integrado a NetSuite, con manejo de periféricos y cajas.', category: 'comercial' },
+            { id: 38, title: 'Integración a Transbank', description: 'Integración de pagos vía POS o web para tarjetas de crédito y débito.', category: 'comercial' },
+            { id: 39, title: 'Integración a Mercado Pago', description: 'Conexión a la pasarela de Mercado Pago para procesar pagos con tarjetas de crédito.', category: 'comercial' },
+            { id: 40, title: 'Nóminas de Pago Sencillito', description: 'Generación de nóminas de pago en el formato requerido por el portal de Sencillito.', category: 'tesoreria' },
+            { id: 41, title: 'Nóminas de Pago Servipag', description: 'Generación de nóminas de pago en el formato requerido por el portal de Servipag.', category: 'tesoreria' },
+            { id: 42, title: 'Integración a E-commerce VTEX', description: 'Conexión base para tu operación en la plataforma VTEX, unificando inventario y pedidos.', category: 'comercial' },
+            { id: 43, title: 'Integración a E-commerce Shopify', description: 'Conecta tu tienda Shopify con NetSuite para una gestión unificada.', category: 'comercial' },
+            { id: 44, title: 'Integración a Multivende', description: 'Integración con el marketplace Multivende para centralizar tus ventas multicanal.', category: 'comercial' },
+            { id: 45, title: 'Sistema Monitoreo Sell In - Sell Out', description: 'Panel "2Trade" para monitorear ventas y stock por tienda de tus distribuidores.', category: 'comercial' },
+            { id: 46, title: 'Integración con Chipax', description: 'Integración para monitoreo consolidado de movimientos bancarios y cartolas.', category: 'tesoreria' },
+            { id: 47, title: 'Formato Factura Telecomunicaciones', description: 'Cumple con las exigencias de formato de factura electrónica de la SUBTEL.', category: 'sii' },
+            { id: 48, title: 'Integración al Banco Central de Chile', description: 'Automatiza la actualización diaria de tipos de cambio oficiales (UF, Dólar, Euro).', category: 'operaciones' },
+            { id: 49, title: 'Administración de Boletas de Garantía', description: 'Módulo para el registro, control y notificación de vencimiento de boletas de garantía.', category: 'tesoreria' },
+            { id: 50, title: 'Administración de Cheques a Fecha', description: 'Módulo para el registro, control y notificación de fechas de pago de cheques emitidos.', category: 'tesoreria' }
+        ];
+
+        const grid = document.getElementById('card-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        const categoryInfo = {
+            sii: { name: 'SII y Tributario', color: 'bg-blue-100 text-blue-800' },
+            tesoreria: { name: 'Tesorería', color: 'bg-green-100 text-green-800' },
+            operaciones: { name: 'Operaciones', color: 'bg-purple-100 text-purple-800' },
+            comercial: { name: 'Comercial', color: 'bg-red-100 text-red-800' }
+        };
+
+        const renderCards = (filter = 'all') => {
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? localizations : localizations.filter(loc => loc.category === filter);
+            
+            filtered.forEach((loc, index) => {
+                const card = document.createElement('div');
+                card.className = 'localization-card bg-white p-6 rounded-lg shadow-sm flex flex-col';
+                card.style.animationDelay = `${index * 0.03}s`;
+                card.innerHTML = `
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl font-extrabold text-gray-300">${loc.id}</span>
+                            <span class="text-xs font-bold py-1 px-2 rounded-full ${categoryInfo[loc.category].color}">${categoryInfo[loc.category].name}</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900">${loc.title}</h3>
+                        <p class="mt-2 text-gray-600 text-sm">${loc.description}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        };
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.getAttribute('data-filter');
+                renderCards(filter);
+            });
+        });
+        
+        // Counter Animation
+        const counter = document.getElementById('counter');
+        const target = 50;
+        let current = 0;
+        const increment = 1;
+        const speed = 40; 
+
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                counter.innerText = current;
+                setTimeout(updateCounter, speed);
+            } else {
+                counter.innerText = target + "+";
+            }
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                updateCounter();
+                observer.disconnect();
+            }
+        }, { threshold: 0.8 });
+
+        observer.observe(counter);
+
+        // Initial render
+        renderCards();
+    });
+    </script>
+
+</body>
+</html>
