@@ -62,8 +62,29 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 0.5s forwards;
+            position: relative;
+            overflow: hidden; /* Hide overflowing insight */
         }
-        .localization-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); border-color: #3b82f6; }
+        .localization-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            border-color: #2563eb;
+        }
+        .insight-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(37, 99, 235, 0.95); /* blue-600 with opacity */
+            color: white;
+            padding: 12px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+        }
+        .localization-card:hover .insight-box {
+            transform: translateY(0);
+        }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -133,56 +154,56 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const localizations = [
-            { id: 1, title: 'Configuración Moneda CLP', description: 'Ajuste para operar sin decimales, como funciona el Peso Chileno.', category: 'operaciones' },
-            { id: 2, title: 'Validador de RUT', description: 'Evita el ingreso de RUTs inválidos en cualquier entidad (clientes, proveedores).', category: 'operaciones' },
-            { id: 3, title: 'Control de Duplicidad de RUT', description: 'Impide crear entidades duplicadas con el mismo RUT pero distinta razón social.', category: 'operaciones' },
-            { id: 4, title: 'Búsqueda Universal por RUT', description: 'Permite buscar clientes, empleados y proveedores usando el RUT en todo el sistema.', category: 'operaciones' },
-            { id: 5, title: 'Balance 8 Columnas', description: 'Genera el reporte en el formato exacto requerido por el SII, listo para exportar.', category: 'sii' },
-            { id: 6, title: 'Libro de Honorarios y Retenciones', description: 'Crea el libro resumen de retenciones de impuesto para una declaración precisa.', category: 'sii' },
-            { id: 7, title: 'Libro Mayor', description: 'Reporte con el resumen de movimientos de todas las cuentas contables.', category: 'sii' },
-            { id: 8, title: 'Libro Diario', description: 'Reporte con el resumen de todos los asientos contables registrados diariamente.', category: 'sii' },
-            { id: 9, title: 'Libro de Compra', description: 'Libro de compras e impuestos, integrado con el registro de DTEs para consistencia total.', category: 'sii' },
-            { id: 10, title: 'Libro de Venta', description: 'Libro de ventas e impuestos (doméstico y exportación), 100% consistente con la emisión de DTEs.', category: 'sii' },
-            { id: 11, title: 'IVA por Línea (Facturas Mixtas)', description: 'Permite la correcta recepción y desglose de facturas con ítems afectos y exentos.', category: 'sii' },
-            { id: 12, title: 'Recepción DTE con Orden de Compra', description: 'Asociación automática de facturas de proveedor contra la OC de referencia.', category: 'sii' },
-            { id: 13, title: 'Recepción DTE con HES y HEM', description: 'Asociación automática de facturas con Hojas de Entrada de Servicios y Mercancías.', category: 'sii' },
-            { id: 14, title: 'Recepción DTE con Guía de Despacho', description: 'Asociación automática de facturas de proveedor con su guía de despacho correspondiente.', category: 'sii' },
-            { id: 15, title: 'Configuración Impuestos Específicos', description: 'Manejo de impuestos complejos por línea (combustibles, alcohol) en facturas de compra.', category: 'sii' },
-            { id: 16, title: 'Integración Nóminas de Sueldos', description: 'Carga automática de centralización desde BUK, Talana, Rex+ y Kiptor.', category: 'operaciones' },
-            { id: 17, title: 'Redistribución Automática de IVA', description: 'Para compras con uso proporcional, el sistema redistribuye el IVA al gasto automáticamente.', category: 'sii' },
-            { id: 18, title: 'Configuración Moneda UF', description: 'Gestión de la UF como moneda, con conversión a CLP vía tipo de cambio diario.', category: 'operaciones' },
-            { id: 19, title: 'Tabla de Comunas de Chile', description: 'Lista desplegable actualizada de comunas para evitar errores de digitación.', category: 'operaciones' },
-            { id: 20, title: 'Tabla de Bancos de Chile', description: 'Lista desplegable de bancos chilenos para agilizar la creación y pago a proveedores.', category: 'operaciones' },
-            { id: 21, title: 'Facturación Electrónica (Sovos-Acepta)', description: 'Emisión del set completo de DTEs (Doméstico y Exportación) integrado a NetSuite.', category: 'sii' },
-            { id: 22, title: 'Set DTEs Emisión Doméstica', description: 'Factura, NC, ND, Boleta, Guía de Despacho, Factura de Compra.', category: 'sii' },
-            { id: 23, title: 'Facturación Electrónica (Facturacion.cl)', description: 'Integración alternativa para emisión de DTEs con Facturacion.cl.', category: 'sii' },
-            { id: 24, title: 'Set DTEs Emisión Exportación', description: 'Factura, Nota de Crédito y Nota de Débito de Exportación.', category: 'sii' },
-            { id: 25, title: 'Recepción DTEs Domésticos', description: 'Recepción y validación de todos los DTEs de proveedores directamente en NetSuite.', category: 'sii' },
-            { id: 26, title: 'Portal Escritorio Acepta', description: 'Permite emitir DTEs no integrados y verificar su traza o estado.', category: 'sii' },
-            { id: 27, title: 'Portal Escritorio Facturacion.cl', description: 'Acceso al portal de Facturacion.cl para emisión y verificación de DTEs.', category: 'sii' },
-            { id: 28, title: 'Manejo de Folios Tributarios', description: 'Carga y control de la vigencia de los folios del SII directamente en NetSuite.', category: 'sii' },
-            { id: 29, title: 'Manejo de Certificado Digital', description: 'Carga y control de la vigencia del certificado digital para emisión de DTEs.', category: 'sii' },
-            { id: 30, title: 'Facturación Masiva por Lotes', description: 'Procesos automáticos para la carga y emisión de grandes volúmenes de facturas.', category: 'operaciones' },
-            { id: 31, title: 'Nóminas de Pago a Proveedores', description: 'Archivos de pago masivo para Santander, Chile, BCI, Scotiabank, Itaú, Security y más.', category: 'tesoreria' },
-            { id: 32, title: 'Rendición de Gastos Inteligente', description: 'Evita el doble ingreso de facturas entre rendiciones y el registro de DTEs.', category: 'operaciones' },
-            { id: 33, title: 'Emisión Masiva Certificados Honorarios', description: 'Emite automática y masivamente los certificados anuales para proveedores.', category: 'sii' },
-            { id: 34, title: 'Contabilización de Factoring Automática', description: 'Genera los asientos contables para la cesión de factoring de un proveedor.', category: 'tesoreria' },
-            { id: 35, title: 'Integración con RindeGastos', description: 'Centralización y contabilización automática de rendiciones aprobadas en RindeGastos.', category: 'operaciones' },
-            { id: 36, title: 'Control Presupuestario Proactivo', description: 'Genera avisos o bloqueos de compras que excederán el presupuesto ANTES de que ocurran.', category: 'operaciones' },
-            { id: 37, title: 'POS para NetSuite (2WIN POS)', description: 'Punto de Venta propio, 100% integrado a NetSuite, con manejo de periféricos y cajas.', category: 'comercial' },
-            { id: 38, title: 'Integración a Transbank', description: 'Integración de pagos vía POS o web para tarjetas de crédito y débito.', category: 'comercial' },
-            { id: 39, title: 'Integración a Mercado Pago', description: 'Conexión a la pasarela de Mercado Pago para procesar pagos con tarjetas de crédito.', category: 'comercial' },
-            { id: 40, title: 'Nóminas de Pago Sencillito', description: 'Generación de nóminas de pago en el formato requerido por el portal de Sencillito.', category: 'tesoreria' },
-            { id: 41, title: 'Nóminas de Pago Servipag', description: 'Generación de nóminas de pago en el formato requerido por el portal de Servipag.', category: 'tesoreria' },
-            { id: 42, title: 'Integración a E-commerce VTEX', description: 'Conexión base para tu operación en la plataforma VTEX, unificando inventario y pedidos.', category: 'comercial' },
-            { id: 43, title: 'Integración a E-commerce Shopify', description: 'Conecta tu tienda Shopify con NetSuite para una gestión unificada.', category: 'comercial' },
-            { id: 44, title: 'Integración a Multivende', description: 'Integración con el marketplace Multivende para centralizar tus ventas multicanal.', category: 'comercial' },
-            { id: 45, title: 'Sistema Monitoreo Sell In - Sell Out', description: 'Panel "2Trade" para monitorear ventas y stock por tienda de tus distribuidores.', category: 'comercial' },
-            { id: 46, title: 'Integración con Chipax', description: 'Integración para monitoreo consolidado de movimientos bancarios y cartolas.', category: 'tesoreria' },
-            { id: 47, title: 'Formato Factura Telecomunicaciones', description: 'Cumple con las exigencias de formato de factura electrónica de la SUBTEL.', category: 'sii' },
-            { id: 48, title: 'Integración al Banco Central de Chile', description: 'Automatiza la actualización diaria de tipos de cambio oficiales (UF, Dólar, Euro).', category: 'operaciones' },
-            { id: 49, title: 'Administración de Boletas de Garantía', description: 'Módulo para el registro, control y notificación de vencimiento de boletas de garantía.', category: 'tesoreria' },
-            { id: 50, title: 'Administración de Cheques a Fecha', description: 'Módulo para el registro, control y notificación de fechas de pago de cheques emitidos.', category: 'tesoreria' }
+            { id: 1, title: 'Configuración Moneda CLP', description: 'Ajuste para operar sin decimales, como funciona el Peso Chileno.', category: 'operaciones', insight: 'Evita errores de redondeo en finanzas.' },
+            { id: 2, title: 'Validador de RUT', description: 'Evita el ingreso de RUTs inválidos en cualquier entidad (clientes, proveedores).', category: 'operaciones', insight: 'Asegura una base de datos limpia.' },
+            { id: 3, title: 'Control de Duplicidad de RUT', description: 'Impide crear entidades duplicadas con el mismo RUT pero distinta razón social.', category: 'operaciones', insight: 'Mantiene la unicidad de tus registros.' },
+            { id: 4, title: 'Búsqueda Universal por RUT', description: 'Permite buscar clientes, empleados y proveedores usando el RUT en todo el sistema.', category: 'operaciones', insight: 'Agiliza la búsqueda de información.' },
+            { id: 5, title: 'Balance 8 Columnas', description: 'Genera el reporte en el formato exacto requerido por el SII, listo para exportar.', category: 'sii', insight: 'Ahorra horas en cierres contables.' },
+            { id: 6, title: 'Libro de Honorarios y Retenciones', description: 'Crea el libro resumen de retenciones de impuesto para una declaración precisa.', category: 'sii', insight: 'Simplifica la declaración de impuestos.' },
+            { id: 7, title: 'Libro Mayor', description: 'Reporte con el resumen de movimientos de todas las cuentas contables.', category: 'sii', insight: 'Visibilidad total de la contabilidad.' },
+            { id: 8, title: 'Libro Diario', description: 'Reporte con el resumen de todos los asientos contables registrados diariamente.', category: 'sii', insight: 'Trazabilidad completa de operaciones.' },
+            { id: 9, title: 'Libro de Compra', description: 'Libro de compras e impuestos, integrado con el registro de DTEs para consistencia total.', category: 'sii', insight: 'Consistencia fiscal garantizada.' },
+            { id: 10, title: 'Libro de Venta', description: 'Libro de ventas e impuestos (doméstico y exportación), 100% consistente con la emisión de DTEs.', category: 'sii', insight: 'Información de ventas siempre al día.' },
+            { id: 11, title: 'IVA por Línea (Facturas Mixtas)', description: 'Permite la correcta recepción y desglose de facturas con ítems afectos y exentos.', category: 'sii', insight: 'Correcta gestión de créditos fiscales.' },
+            { id: 12, title: 'Recepción DTE con Orden de Compra', description: 'Asociación automática de facturas de proveedor contra la OC de referencia.', category: 'sii', insight: 'Automatiza el proceso de 3-way match.' },
+            { id: 13, title: 'Recepción DTE con HES y HEM', description: 'Asociación automática de facturas con Hojas de Entrada de Servicios y Mercancías.', category: 'sii', insight: 'Control total sobre la recepción.' },
+            { id: 14, title: 'Recepción DTE con Guía de Despacho', description: 'Asociación automática de facturas de proveedor con su guía de despacho correspondiente.', category: 'sii', insight: 'Agiliza la validación de mercadería.' },
+            { id: 15, title: 'Configuración Impuestos Específicos', description: 'Manejo de impuestos complejos por línea (combustibles, alcohol) en facturas de compra.', category: 'sii', insight: 'Cumplimiento para industrias reguladas.' },
+            { id: 16, title: 'Integración Nóminas de Sueldos', description: 'Carga automática de centralización desde BUK, Talana, Rex+ y Kiptor.', category: 'operaciones', insight: 'Elimina la digitación manual de sueldos.' },
+            { id: 17, title: 'Redistribución Automática de IVA', description: 'Para compras con uso proporcional, el sistema redistribuye el IVA al gasto automáticamente.', category: 'sii', insight: 'Cálculo de IVA Proporcional sin errores.' },
+            { id: 18, title: 'Configuración Moneda UF', description: 'Gestión de la UF como moneda, con conversión a CLP vía tipo de cambio diario.', category: 'operaciones', insight: 'Ideal para contratos y gestión inmobiliaria.' },
+            { id: 19, title: 'Tabla de Comunas de Chile', description: 'Lista desplegable actualizada de comunas para evitar errores de digitación.', category: 'operaciones', insight: 'Mejora la calidad de los datos de despacho.' },
+            { id: 20, title: 'Tabla de Bancos de Chile', description: 'Lista desplegable de bancos chilenos para agilizar la creación y pago a proveedores.', category: 'operaciones', insight: 'Reduce errores en la creación de proveedores.' },
+            { id: 21, title: 'Facturación Electrónica (Sovos-Acepta)', description: 'Emisión del set completo de DTEs (Doméstico y Exportación) integrado a NetSuite.', category: 'sii', insight: 'Emisión de DTEs nativa y centralizada.' },
+            { id: 22, title: 'Set DTEs Emisión Doméstica', description: 'Factura, NC, ND, Boleta, Guía de Despacho, Factura de Compra.', category: 'sii', insight: 'Todo el espectro de documentos locales.' },
+            { id: 23, title: 'Facturación Electrónica (Facturacion.cl)', description: 'Integración alternativa para emisión de DTEs con Facturacion.cl.', category: 'sii', insight: 'Flexibilidad en tu proveedor de DTE.' },
+            { id: 24, title: 'Set DTEs Emisión Exportación', description: 'Factura, Nota de Crédito y Nota de Débito de Exportación.', category: 'sii', insight: 'Facilita tus operaciones de comercio exterior.' },
+            { id: 25, title: 'Recepción DTEs Domésticos', description: 'Recepción y validación de todos los DTEs de proveedores directamente en NetSuite.', category: 'sii', insight: 'Centraliza la gestión de compras.' },
+            { id: 26, title: 'Portal Escritorio Acepta', description: 'Permite emitir DTEs no integrados y verificar su traza o estado.', category: 'sii', insight: 'Control total sobre el ciclo de vida del DTE.' },
+            { id: 27, title: 'Portal Escritorio Facturacion.cl', description: 'Acceso al portal de Facturacion.cl para emisión y verificación de DTEs.', category: 'sii', insight: 'Visibilidad completa de tus documentos.' },
+            { id: 28, title: 'Manejo de Folios Tributarios', description: 'Carga y control de la vigencia de los folios del SII directamente en NetSuite.', category: 'sii', insight: 'Evita la interrupción de la facturación.' },
+            { id: 29, title: 'Manejo de Certificado Digital', description: 'Carga y control de la vigencia del certificado digital para emisión de DTEs.', category: 'sii', insight: 'Seguridad y gestión centralizada.' },
+            { id: 30, title: 'Facturación Masiva por Lotes', description: 'Procesos automáticos para la carga y emisión de grandes volúmenes de facturas.', category: 'operaciones', insight: 'Ideal para empresas de servicios o suscripciones.' },
+            { id: 31, title: 'Nóminas de Pago a Proveedores', description: 'Archivos de pago masivo para Santander, Chile, BCI, Scotiabank, Itaú, Security y más.', category: 'tesoreria', insight: 'Cero errores en pagos masivos.' },
+            { id: 32, title: 'Rendición de Gastos Inteligente', description: 'Evita el doble ingreso de facturas entre rendiciones y el registro de DTEs.', category: 'operaciones', insight: 'Elimina la duplicidad de datos.' },
+            { id: 33, title: 'Emisión Masiva Certificados Honorarios', description: 'Emite automática y masivamente los certificados anuales para proveedores.', category: 'sii', insight: 'Cumplimiento anual en un solo clic.' },
+            { id: 34, title: 'Contabilización de Factoring Automática', description: 'Genera los asientos contables para la cesión de factoring de un proveedor.', category: 'tesoreria', insight: 'Simplifica la gestión de financiamiento.' },
+            { id: 35, title: 'Integración con RindeGastos', description: 'Centralización y contabilización automática de rendiciones aprobadas en RindeGastos.', category: 'operaciones', insight: 'Automatiza el flujo de gastos de empleados.' },
+            { id: 36, title: 'Control Presupuestario Proactivo', description: 'Genera avisos o bloqueos de compras que excederán el presupuesto ANTES de que ocurran.', category: 'operaciones', insight: 'Control de gastos en tiempo real.' },
+            { id: 37, title: 'POS para NetSuite (2WIN POS)', description: 'Punto de Venta propio, 100% integrado a NetSuite, con manejo de periféricos y cajas.', category: 'comercial', insight: 'Visión 360° de tu operación retail.' },
+            { id: 38, title: 'Integración a Transbank', description: 'Integración de pagos vía POS o web para tarjetas de crédito y débito.', category: 'comercial', insight: 'Conciliación de pagos automática.' },
+            { id: 39, title: 'Integración a Mercado Pago', description: 'Conexión a la pasarela de Mercado Pago para procesar pagos con tarjetas de crédito.', category: 'comercial', insight: 'Expande tus opciones de pago online.' },
+            { id: 40, title: 'Nóminas de Pago Sencillito', description: 'Generación de nóminas de pago en el formato requerido por el portal de Sencillito.', category: 'tesoreria', insight: 'Facilita el pago de servicios.' },
+            { id: 41, title: 'Nóminas de Pago Servipag', description: 'Generación de nóminas de pago en el formato requerido por el portal de Servipag.', category: 'tesoreria', insight: 'Amplía tus canales de pago.' },
+            { id: 42, title: 'Integración a E-commerce VTEX', description: 'Conexión base para tu operación en la plataforma VTEX, unificando inventario y pedidos.', category: 'comercial', insight: 'Gestión unificada de tu e-commerce.' },
+            { id: 43, title: 'Integración a E-commerce Shopify', description: 'Conecta tu tienda Shopify con NetSuite para una gestión unificada.', category: 'comercial', insight: 'Sincronización de stock en tiempo real.' },
+            { id: 44, title: 'Integración a Multivende', description: 'Integración con el marketplace Multivende para centralizar tus ventas multicanal.', category: 'comercial', insight: 'Domina los marketplaces desde NetSuite.' },
+            { id: 45, title: 'Sistema Monitoreo Sell In - Sell Out', description: 'Panel "2Trade" para monitorear ventas y stock por tienda de tus distribuidores.', category: 'comercial', insight: 'Inteligencia de negocios para tu canal.' },
+            { id: 46, title: 'Integración con Chipax', description: 'Integración para monitoreo consolidado de movimientos bancarios y cartolas.', category: 'tesoreria', insight: 'Visibilidad financiera en tiempo real.' },
+            { id: 47, title: 'Formato Factura Telecomunicaciones', description: 'Cumple con las exigencias de formato de factura electrónica de la SUBTEL.', category: 'sii', insight: 'Cumplimiento para el sector Telco.' },
+            { id: 48, title: 'Integración al Banco Central de Chile', description: 'Automatiza la actualización diaria de tipos de cambio oficiales (UF, Dólar, Euro).', category: 'operaciones', insight: 'Tipos de cambio siempre correctos.' },
+            { id: 49, title: 'Administración de Boletas de Garantía', description: 'Módulo para el registro, control y notificación de vencimiento de boletas de garantía.', category: 'tesoreria', insight: 'Control total de tus garantías.' },
+            { id: 50, title: 'Administración de Cheques a Fecha', description: 'Módulo para el registro, control y notificación de fechas de pago de cheques emitidos.', category: 'tesoreria', insight: 'Gestión proactiva de tu flujo de caja.' }
         ];
 
         const grid = document.getElementById('card-grid');
@@ -211,6 +232,9 @@
                         </div>
                         <h3 class="font-bold text-lg text-gray-900">${loc.title}</h3>
                         <p class="mt-2 text-gray-600 text-sm">${loc.description}</p>
+                    </div>
+                    <div class="insight-box">
+                        <p class="text-sm font-semibold">${loc.insight}</p>
                     </div>
                 `;
                 grid.appendChild(card);
